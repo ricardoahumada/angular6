@@ -1,0 +1,18 @@
+<section>
+	<h2>Lista de proyectos</h2>
+	<input [(ngModel)]="textoafiltrar" placeholder="Filtra por nombre">
+	<table class="table">
+		<tr>
+			<th>Id</th>
+			<th>Nombre</th>
+			<th>Fecha</th>
+			<th>Coste</th>
+		</tr>
+		<tr *ngFor="let proyecto of proyectos | listFilter : textoafiltrar:'nombre'">
+			<td>{{proyecto.pid}}</td>
+			<td>{{proyecto.nombre}}</td>
+			<td>{{proyecto.fecha|date}}</td>
+			<td>{{proyecto.coste|currency:'EUR':'symbol'}}</td>
+		</tr>
+	</table>
+</section>

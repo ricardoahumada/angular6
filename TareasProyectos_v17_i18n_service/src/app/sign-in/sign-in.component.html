@@ -1,0 +1,31 @@
+<div class="sign-in-wrapper">
+  <form [formGroup]="frm">
+    <h1>{{'ACCESS'|translate}}</h1>
+    <input type="text" formControlName="username" placeholder="{{'YOURUSERNAME'|translate}}">
+    <div
+      class="input-errors"
+      *ngIf="(frm.get('username').invalid && frm.get('username').touched) || showInputErrors"
+    >
+      <div *ngIf="frm.get('username').hasError('required')">
+         {{'USERNAMEREQ'|translate}}
+      </div>
+    </div>
+    <input type="password" formControlName="password" placeholder="{{'YOURPASS'|translate}}">
+    <div
+      class="input-errors"
+      *ngIf="(frm.get('password').invalid && frm.get('password').touched) || showInputErrors"
+    >
+      <div *ngIf="frm.get('password').hasError('required')">
+         {{'PASSREQ'|translate}}
+      </div>
+    </div>
+    <div class="sign-in-error" *ngIf="hasFailed">
+       {{'INVALIDUSERNAME&PASS'|translate}}
+    </div>
+    <button (click)="doSignIn()" [disabled]="isBusy">
+      <ng-template [ngIf]="!isBusy">{{'SIGNIN'|translate}}</ng-template>
+      <ng-template [ngIf]="isBusy">{{'SIGNINGINPLEASEWAIT'|translate}}</ng-template>
+    </button>
+    <p class="tip">{{'TIP'|translate}}: "demo"/"demo".</p>
+  </form>
+</div>

@@ -1,0 +1,31 @@
+<div class="sign-in-wrapper">
+  <form [formGroup]="frm">
+    <h1 i18n="access|Access@@access">Access</h1>
+    <input type="text" formControlName="username" i18n-placeholder="username placeholder" placeholder="Your username">
+    <div
+      class="input-errors"
+      *ngIf="(frm.get('username').invalid && frm.get('username').touched) || showInputErrors"
+    >
+      <div *ngIf="frm.get('username').hasError('required')" i18n="username required|Username required@@usernamereq">
+        Username required
+      </div>
+    </div>
+    <input type="password" formControlName="password" i18n-placeholder="pass placeholder" placeholder="Your password">
+    <div
+      class="input-errors"
+      *ngIf="(frm.get('password').invalid && frm.get('password').touched) || showInputErrors"
+    >
+      <div *ngIf="frm.get('password').hasError('required')" i18n="password required|Password required@@passwordreq">
+        Password required
+      </div>
+    </div>
+    <div class="sign-in-error" *ngIf="hasFailed" i18n="signin error|Message when error on signin@@signinerror">
+      Invalid username and password
+    </div>
+    <button (click)="doSignIn()" [disabled]="isBusy">
+      <ng-template [ngIf]="!isBusy" i18n="signin|Signin@@signin">Sign in</ng-template>
+      <ng-template [ngIf]="isBusy" i18n="signin wait|Wait while signin@@signinwait">Signing in, please wait...</ng-template>
+    </button>
+    <p class="tip">Tip: "demo"/"demo".</p>
+  </form>
+</div>

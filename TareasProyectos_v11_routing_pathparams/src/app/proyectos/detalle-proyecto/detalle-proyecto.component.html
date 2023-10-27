@@ -1,0 +1,12 @@
+<h3>Detalle de proyecto</h3>
+<article>
+  <p>Pid: {{proyecto?.pid}}</p>
+  <p>Nombre: {{proyecto?.nombre}}</p>
+  <p>Responsable: {{proyecto?.responsable}}</p>
+</article>
+<p>
+  <a [routerLink]="['./usuarios']">Usuarios</a> |
+  <a [routerLink]="['./tareas']">Tareas</a>
+</p>
+
+<router-outlet></router-outlet>
